@@ -4,12 +4,12 @@ Este é um trabalho de tema dirigido onde utilizaremos um kinectV2 para detecç�
 ##tecnologias utilizadas
 * * *
 - KinectV2
--- C++
--- Libfreenect
--- OpenCL
--- OpenGL
--- OpenNI
+	- C++
+	- Libfreenect
+	- OpenCL
+	- OpenGL
+	- OpenNI
 - Lego EV3
--- Python
--- EV3dev
+	- Python
+	- EV3dev
 
