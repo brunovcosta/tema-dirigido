@@ -1,0 +1,1 @@
+/home/bruno/Desktop/tema-dirigido/kinect/build/CMakeFiles/main.dir
