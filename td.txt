@@ -1,0 +1,19 @@
+apresentação
+objetivos by ricarte
+oque que a gente fez até agora
+	robô
+		ev3
+		monobrick/ev3dev?
+		path finding
+######################################################################
+	mapa
+		captura/opencv
+		tratamento
+			discretização
+			transformação no espaço de cores
+######################################################################
+			detecção de bordas
+		impressão
+futuro
+	integração com kinect
+	libfreenect2
