@@ -1,1 +1,1 @@
-/home/bruno/Desktop/td/build/CMakeFiles/main.dir
+/home/bruno/Desktop/tema-dirigido/imagem/build/CMakeFiles/main.dir
