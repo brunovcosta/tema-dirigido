@@ -1,4 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
+if(CMAKE_COMPILER_IS_GNUCXX)
+	add_definitions(-std=gnu++1y)
+endif()
 project( main )
 add_executable( main main.cpp )
 find_package( OpenCV REQUIRED )

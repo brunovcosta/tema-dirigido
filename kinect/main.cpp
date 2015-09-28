@@ -46,29 +46,28 @@ int main(int argc, char* argv[]){
 	
 	libfreenect2::SyncMultiFrameListener listener(libfreenect2::Frame::Color | libfreenect2::Frame::Ir | libfreenect2::Frame::Depth);
 	libfreenect2::FrameMap frames;
-	libfreenect2::Frame undistorted(512, 424, 4), registered(512, 424, 4);
 	
 	dev->setColorFrameListener(&listener);
 	dev->setIrAndDepthFrameListener(&listener);
 	dev->start();
-    
+    Mat raw_image,final_image;
+	libfreenect2::Frame *depth; 
+	namedWindow("MyWindow", WND_PROP_FULLSCREEN);
+	setWindowProperty("MyWindow", WND_PROP_FULLSCREEN, WINDOW_FULLSCREEN);
 	while (waitKey(33) & 0xFF!=27){
 		listener.waitForNewFrame(frames);
-		libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
+		depth = frames[libfreenect2::Frame::Depth];
 		
-		// Carrega imagem-------------------------------------------------------
-		Mat raw_image;
 		raw_image=cv::Mat(depth->height, depth->width, CV_32FC1, depth->data)/10;
-		resize(raw_image, raw_image, Size(1366, 768)); // Redimensiona a imagem
 		
-		namedWindow("MyWindow", WND_PROP_FULLSCREEN);
-		setWindowProperty("MyWindow", WND_PROP_FULLSCREEN, WINDOW_FULLSCREEN);
-		imshow("MyWindow", levelCurves(raw_image));
-	
+		listener.release(frames);
+		final_image = levelCurves(raw_image);	
+		imshow("MyWindow", final_image);
 	}
 	destroyWindow("MyWindow");
+	raw_image.release();
+	final_image.release();
 	
-	//Finaliza o Libfreenect2--------------------------------------------------------------------
 	dev->stop();
 	dev->close();
 	

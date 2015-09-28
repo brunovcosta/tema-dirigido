@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+/home/bruno/Desktop/tema-dirigido/kinect/levelCurves.cpp
+
 /home/bruno/Desktop/tema-dirigido/kinect/main.cpp
 opencv2/core/core_c.h
 /home/bruno/Desktop/tema-dirigido/kinect/opencv2/core/core_c.h
@@ -49,12 +51,12 @@ iostream
 -
 fstream
 -
-ctime
--
 signal.h
 -
 myFileLogger.cpp
 /home/bruno/Desktop/tema-dirigido/kinect/myFileLogger.cpp
+levelCurves.cpp
+/home/bruno/Desktop/tema-dirigido/kinect/levelCurves.cpp
 
 /home/bruno/Desktop/tema-dirigido/kinect/myFileLogger.cpp
 
