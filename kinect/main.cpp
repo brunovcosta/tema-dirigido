@@ -50,18 +50,40 @@ int main(int argc, char* argv[]){
 	dev->setColorFrameListener(&listener);
 	dev->setIrAndDepthFrameListener(&listener);
 	dev->start();
-    Mat raw_image,final_image;
+
+	Mat raw_image,final_image;
+	//namedWindow("MyWindow", WND_PROP_FULLSCREEN);
+	//setWindowProperty("MyWindow", WND_PROP_FULLSCREEN, WINDOW_FULLSCREEN);
+	
+	listener.waitForNewFrame(frames);
 	libfreenect2::Frame *depth; 
-	namedWindow("MyWindow", WND_PROP_FULLSCREEN);
-	setWindowProperty("MyWindow", WND_PROP_FULLSCREEN, WINDOW_FULLSCREEN);
+	depth = frames[libfreenect2::Frame::Depth];
+	raw_image=Mat(depth->height, depth->width, CV_32FC1, depth->data)/10;
+
+	Point center,diff;
 	while (waitKey(33) & 0xFF!=27){
 		listener.waitForNewFrame(frames);
 		depth = frames[libfreenect2::Frame::Depth];
+		resize(raw_image,raw_image,Size(depth->width,depth->height));
+		absdiff(raw_image,Mat(depth->height, depth->width, CV_32FC1, depth->data)/10,final_image);
+		//threshold(final_image,final_image,1,255,THRESH_BINARY);
 		
-		raw_image=cv::Mat(depth->height, depth->width, CV_32FC1, depth->data)/10;
+		erode(final_image,final_image,Mat::ones(4,4,CV_32FC1));
+		Moments mm = moments(final_image);
+		if(mm.m00>5000){
+			diff = (Point(mm.m10/mm.m00, mm.m01/mm.m00)+diff-center)/2;
+			center=Point(mm.m10/mm.m00, mm.m01/mm.m00);
+		}else{
+			diff = Point(0,0);
+		}
+		cvtColor(final_image,final_image,CV_GRAY2RGB);
+		circle(final_image, center, 5, Scalar(0,0,128), -1);
+		line(final_image, center,center+diff, Scalar(0,128,0), 3);
+
+		raw_image=Mat(depth->height, depth->width, CV_32FC1, depth->data)/10;
 		
 		listener.release(frames);
-		final_image = levelCurves(raw_image);	
+		//final_image = levelCurves(raw_image);	
 		imshow("MyWindow", final_image);
 	}
 	destroyWindow("MyWindow");
