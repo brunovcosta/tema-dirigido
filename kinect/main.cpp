@@ -61,14 +61,15 @@ int main(int argc, char* argv[]){
 	raw_image=Mat(depth->height, depth->width, CV_32FC1, depth->data)/10;
 
 	Point center,diff;
-	while (waitKey(33) & 0xFF!=27){
+	while (waitKey(5*33) & 0xFF!=27){
 		listener.waitForNewFrame(frames);
 		depth = frames[libfreenect2::Frame::Depth];
 		resize(raw_image,raw_image,Size(depth->width,depth->height));
 		absdiff(raw_image,Mat(depth->height, depth->width, CV_32FC1, depth->data)/10,final_image);
 		//threshold(final_image,final_image,1,255,THRESH_BINARY);
 		
-		erode(final_image,final_image,Mat::ones(4,4,CV_32FC1));
+		//erode(final_image,final_image,Mat::ones(5,5,CV_32FC1));
+		morphologyEx(final_image,final_image,MORPH_OPEN,Mat::ones(5,5,CV_32FC1));
 		Moments mm = moments(final_image);
 		if(mm.m00>5000){
 			diff = (Point(mm.m10/mm.m00, mm.m01/mm.m00)+diff-center)/2;
