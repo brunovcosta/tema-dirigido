@@ -66,9 +66,5 @@ while(True):
 		os.system(" echo run-direct > /sys/class/tacho-motor/motor1/command")
 	
 	if(cmd == 'x'):
-		os.system("echo stop > /sys/class/tacho-motor/motor0/command")	
-		os.system("echo stop > /sys/class/tacho-motor/motor1/command")			
-		
-		
-		
-
+		os.system("echo stop > /sys/class/tacho-motor/motor0/command")
+		os.system("echo stop > /sys/class/tacho-motor/motor1/command")
