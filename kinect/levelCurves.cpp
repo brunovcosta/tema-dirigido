@@ -10,8 +10,8 @@ Mat levelCurves(Mat raw_image){
 	// hue vai de 0 ~ 180, e nao de 0 ~ 255-----------------------
 	//	medianBlur(raw_image,raw_image,9);
 	raw_image.convertTo(raw_image,CV_8U);
-	resize(raw_image, raw_image, Size(1280, 768));
-	normalize(raw_image, raw_image, 0, 255, NORM_MINMAX, CV_8UC1);
+	//resize(raw_image, raw_image, Size(1280, 768));
+	//normalize(raw_image, raw_image, 0, 255, NORM_MINMAX, CV_8UC1);
 	double delta_height = 10;
 	trunked_image = raw_image/delta_height;
 	trunked_image=trunked_image*delta_height;  // trunca os pixels
