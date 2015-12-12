@@ -13,4 +13,4 @@ Este é um trabalho de tema dirigido onde utilizaremos um kinectV2 para detecç�
 	- EV3dev
 
 ##ROBÔ
-(img/robo.jpg)
+![foto do robô utilizado](img/robo.jpg "Robô montado com EV3")
