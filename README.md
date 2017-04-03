@@ -1,7 +1,7 @@
 # TEMA-DIRIGIDO
-##APRESENTAÇÃO GERAL
+## APRESENTAÇÃO GERAL
 Este é um trabalho de tema dirigido onde utilizaremos um kinectV2 para detecção de obstáculos e um EV3 para navegação.
-##TECNOLOGIAS UTILIZADAS
+## TECNOLOGIAS UTILIZADAS
 - KinectV2
 	- C++
 	- Libfreenect
@@ -12,5 +12,5 @@ Este é um trabalho de tema dirigido onde utilizaremos um kinectV2 para detecç�
 	- Python
 	- EV3dev
 
-##ROBÔ
+## ROBÔ
 ![foto do robô utilizado](img/robo.jpg "Robô montado com EV3")
